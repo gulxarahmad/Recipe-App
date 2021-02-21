@@ -1,13 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {useFonts} from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+import RecipeNav from './Navigations/RecipeNavigation';
 
 export default function App() {
+
+  const [loaded] = useFonts({
+    font1: require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+  
+  if (!loaded) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+     <RecipeNav/>
   );
 }
 
